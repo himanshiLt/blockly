@@ -2,15 +2,16 @@ postMerge :
   preRun: 
     command:
       - npm ci
-      - npm run package
   subModules:    
       - name: node      
         path : "./tests/node"
         pattern: 
           - "./run_node_test.js"
         framework : mocha
-        runPreRunEveryTime: true
-        configFile : "./.mocharc.js"
+        preRun:
+          command:
+            - npm run package
+        configFile : .mocharc.js
 version : 2.0.0
 nodeVersion: 16.15.0
 tier: large
